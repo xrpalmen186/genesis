@@ -1,1 +1,1 @@
-# Genesis Python Proyect
+# Genesis Python Project
