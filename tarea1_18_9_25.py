@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 a = int(input("Introduce el primer valor: "))
 b = int(input("Introduce el segundo valor: "))
 suma = a + b
