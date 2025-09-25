@@ -6,8 +6,8 @@ def actividad1():
     while True:
         n = int(input("Introduce un número (negativo para salir): "))
         if n < 0:
-            break
-        numeros.append(n)
+            break #si es negativo salimos del bucle
+        numeros.append(n) #para añadir a la lista
     
     if numeros:
         print("Números introducidos:", numeros)
@@ -32,6 +32,7 @@ def actividad3():
     buscar = input("Introduce una cadena para buscar: ")
     if buscar in lista:
         print(f"La cadena '{buscar}' está en la lista.")
+        # TODO: lista.count? para decir cuantas veces aparece en la lista
         print(f"Aparece {lista.count(buscar)} veces.")
     else:
         print(f"La cadena '{buscar}' no está en la lista.")
@@ -39,13 +40,15 @@ def actividad3():
     nueva = input("Introduce una cadena nueva para sustituir la primera: ")
     if buscar in lista:
         #sustituir solo la primera
-        indice = lista.index(buscar)
-        lista[indice] = nueva
+        
+        # TODO: nueva = lista.index??
+        i = lista.index(buscar)
+        lista[i] = nueva
         print("Lista después de la sustitución:", lista)
     
     borrar = input("Introduce una cadena para borrar de la lista: ")
     if borrar in lista:
-        lista = [x for x in lista if x != borrar]
+        # lista = [x for x in lista if x != borrar] ?? no lo entiendo del todo
         print("Lista después de borrar:", lista)
     else:
         print(f"La cadena '{borrar}' no se encuentra en la lista.")

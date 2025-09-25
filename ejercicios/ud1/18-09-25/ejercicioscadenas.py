@@ -18,7 +18,7 @@ def ejercicio2():
 
     resultado = ""
     for c in cadena:
-        if c.isdigit():        # isdigit() comprueba si el carácter es un número
+        if c.isdigit(): # isdigit() comprueba si el carácter es un número
             resultado += caracter
         else:
             resultado += c
@@ -37,10 +37,10 @@ def ejercicio2():
 def ejercicio3():
     cadena = input("Introduce una frase: ")
 
-    palabras = cadena.split()   # separamos en palabras
+    palabras = cadena.split() # separamos en palabras
 
     # 1. Iniciales
-    iniciales = "".join([p[0].upper() for p in palabras])  # primera letra de cada palabra
+    iniciales = "".join([p[0].upper() for p in palabras]) # primera letra de cada palabra
     print("Iniciales:", iniciales)
 
     # 2. Cada palabra con primera letra mayúscula
@@ -79,13 +79,14 @@ def ejercicio4():
 def ejercicio5():
     palabra = input("Introduce una palabra: ")
 
-    # Normalizamos quitando espacios y pasando a minúsculas
-    normalizada = palabra.replace(" ", "").lower()
+    #quitamos espacios y pasamos a minúsculas
+    sinespacios = palabra.replace(" ", "").lower()
 
-    if normalizada == normalizada[::-1]:
+    if sinespacios == sinespacios[::-1]:
         print(f"'{palabra}' es un palíndromo.")
     else:
         print(f"'{palabra}' NO es un palíndromo.")
+
 
 
 while True:
