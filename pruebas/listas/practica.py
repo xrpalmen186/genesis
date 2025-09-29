@@ -26,7 +26,7 @@ Estás creando un pequeño gestor de tareas.
 tareas = []
 
 for x in range(10):
-   nuevaTarea = input("Añade una nueva tarea: ")
+   nuevaTarea = input("Añade una nueva tarea (fin para terminar): ")
    
    if nuevaTarea == "fin":
       break
@@ -57,9 +57,9 @@ while(True):
       eliminar = input("Introduzca el número de la tarea a eliminar: ")
       tareas.pop(int(eliminar)+1)
    elif opcion == "3":
-      priorizar = input("Introduzca el número de la tarea a priorizar:")
-      tareas.insert(0, tareas[int(priorizar)-1])
-      tareas.remove(tareas[int(priorizar)])
+      priorizar = input("Introduzca el número de la tarea a priorizar: ")
+      tareaPriorizada = tareas.pop(tareas.index(tareas[int(priorizar) - 1]))
+      tareas.insert(0, tareaPriorizada)
    elif opcion == "4":
       tareas.sort()
    elif opcion == "5":
