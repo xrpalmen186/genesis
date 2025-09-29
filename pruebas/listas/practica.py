@@ -59,7 +59,7 @@ while(True):
    elif opcion == "3":
       priorizar = input("Introduzca el número de la tarea a priorizar:")
       tareas.insert(0, tareas[int(priorizar)-1])
-      tareas.remove(tareas[int(priorizar)-1])
+      tareas.remove(tareas[int(priorizar)])
    elif opcion == "4":
       tareas.sort()
    elif opcion == "5":
