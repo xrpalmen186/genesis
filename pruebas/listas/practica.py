@@ -1,109 +1,3 @@
-# EJERCICIOS
-
-'''
-
-# EJERCICIO PROPUESTO 1
-
-Tenemos un texto dónde queremos encontrar palabras clave. Las palabras clave pueden ser hasta 5 y debemos pedirlas al usuario y guadarlas en una lista.
-
-Si el usuario quiere poner menos de 5 palabras clave, deberá escribir "fin" para terminar de introducir datos. Si el usuario introduce números o nada, deberemos eliminarlos de la lista antes de la búsqueda.
-
-En otra lista, debemos guardar el número de veces que aparece cada palabra clave en nuestro texto. Por ejemplo, si la palabra clave son ordenador y portátil y aparecen 5 y 7 veces respectivamente, nuestras listas deberían ser así:
-    - keywords = ["ordenador", "portátil"]
-    - ocurrencias = [5, 7]
-
-Pista: Podemos pasar de una cadena de texto a una lista de palabras mediante el método texto.split().
-'''
-
-texto=""""Seguramente hayas notado que tu productividad ha bajado desde que trabajas desde casa.
-
-Es muy importante que logremos teletrabajar efectivamente y de manera autorregulada.
-Esto se traduce en finalizar antes nuestras tareas y evitar jornadas laborales interminables.
-El primer consejo y uno de los más importantes ya te lo he dado en el apartado anterior.
-
-Tenemos que construir un espacio de trabajo en el que nos sintamos cómodos y dispongamos de todas las herramientas necesarias para teletrabajar. En la medida de lo posible, es importante teletrabajar siempre en el mismo lugar.
-De esta forma, nuestro cerebro asocia el sitio con la acción de trabajar y nos hará estar más focalizados en nuestras tareas."""
-
-keywords = []
-ocurrencias = []
-
-for x in range(5):
-   keyword = input("Introduce una palabra clave o fin para terminar: ")
-   if keyword == "fin":
-      break
-   else:
-      keywords.append(keyword)
-
-print(keywords)
-
-posicion = 0
-while(True):
-   if posicion >= len(keywords):
-      break
-   if keywords[posicion] == '':
-      keywords.pop(posicion)
-   elif keywords[posicion].isnumeric():
-      keywords.pop(posicion)
-   else:
-      posicion += 1
-
-print("Lista de keywords corregida")
-print(keywords)
-
-texto = texto.replace('.', '').replace(',', '').split()
-# Quitamos los caracteres especiales como , . y lo convertimos en lista
-
-for x in range(len(keywords)):
-   ocurrencias.append(0)
-
-for palabra in texto:
-   for keyword in keywords:
-      if keyword == palabra:
-         pos = keywords.index(keyword)
-         ocurrencias[pos] += 1
-         break
-      
-print(ocurrencias)
-
-'''
-
-EJERCICIO PROPUESTO 2
-
-Crea una lista con los nombres de tus 5 frutas favoritas.  
-Después:  
-1. Añade una fruta más al final de la lista.  
-2. Inserta una fruta en la segunda posición.  
-3. Elimina la primera fruta usando `pop()`.  
-4. Elimina una fruta concreta usando `remove()`.  
-5. Muestra la lista final.  
-
-
-'''
-
-
-
-
-'''
-
-EJERCICIO PROPUESTO 3
-
-Un profesor quiere llevar el control de asistencia de sus alumnos.  
-
-1. Pide al usuario que ingrese nombres de alumnos (como máximo 8).  
-   - Si el usuario escribe "fin", se deja de pedir nombres antes del máximo.  
-   - Si un alumno se repite, no debe añadirse dos veces (controlar con `in` o métodos de lista).  
-
-2. Muestra la lista de alumnos inscritos.  
-
-3. Simula que uno de los alumnos se ha dado de baja:
-   - Pide el nombre de un alumno a eliminar y retíralo de la lista si existe.  
-
-4. Finalmente, muestra la lista de alumnos ordenada alfabéticamente en orden ascendente y en orden descendente.  
-
-
-'''
-
-
 
 
 '''
@@ -128,3 +22,52 @@ Estás creando un pequeño gestor de tareas.
 
 
 '''
+
+tareas = []
+
+for x in range(10):
+   nuevaTarea = input("Añade una nueva tarea: ")
+   
+   if nuevaTarea == "fin":
+      break
+   else:
+      tareas.append(nuevaTarea)
+
+print(tareas)
+
+while(True):
+   print("""
+         ========================
+         1. Mostrar
+         2. Eliminar
+         3. Priorizar
+         4. Ordenar
+         5. Invertir
+         6. Vaciar
+         ........................
+         7. Salir
+         ========================
+         """)
+   opcion = input("Introduce una opción (0-7): ")
+
+   if opcion == "1":
+      for x in range(len(tareas)):
+         print(f"{x+1}. {tareas[x]}")
+   elif opcion == "2":
+      eliminar = input("Introduzca el número de la tarea a eliminar: ")
+      tareas.pop(int(eliminar)+1)
+   elif opcion == "3":
+      priorizar = input("Introduzca el número de la tarea a priorizar:")
+      tareas.insert(0, tareas[int(priorizar)-1])
+      tareas.remove(tareas[int(priorizar)-1])
+   elif opcion == "4":
+      tareas.sort()
+   elif opcion == "5":
+      tareas.reverse()
+   elif opcion == "6":
+      tareas.clear()
+   elif opcion == "7":
+      print(tareas)
+      break
+   else:
+      print("Opción no válida.")
