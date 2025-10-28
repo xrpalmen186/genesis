@@ -1,0 +1,37 @@
+[
+    {
+        "titulo": "Cien años de soledad",
+        "autor": "Gabriel García Márquez",
+        "anio": 1967,
+        "genero": "Novela",
+        "prestamos": {}
+    },
+    {
+        "titulo": "El Quijote",
+        "autor": "Miguel de Cervantes",
+        "anio": 1605,
+        "genero": "Novela",
+        "prestamos": {}
+    },
+    {
+        "titulo": "Nacidos de la Bruma",
+        "autor": "Brandon Sanderson",
+        "anio": 2013,
+        "genero": "Fantasia",
+        "prestamos": {}
+    },
+    {
+        "titulo": "El Senor de los Anillos",
+        "autor": "JRR Tolkien",
+        "anio": 1970,
+        "genero": "Fantasia",
+        "prestamos": {}
+    },
+    {
+        "titulo": "El Hobbit",
+        "autor": "JRR Tolkien",
+        "anio": 1970,
+        "genero": "Fantasia",
+        "prestamos": {}
+    }
+]
