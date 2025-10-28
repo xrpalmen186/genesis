@@ -12,7 +12,7 @@ import json
 # FUNCIÓN 1: Mostrar la cartelera
 # ------------------------------
 def mostrar_cartelera(cartelera):
-    """
+    """UT2.1.5: Aplicación Python Personal
     Muestra todas las películas disponibles en la cartelera.
     """
     pass
