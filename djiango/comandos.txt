@@ -1,0 +1,27 @@
+# creación del entorno virtual:
+
+python3 -m venv env
+source env/bin/activate
+
+---
+
+# instalamos dependencias:
+# creamos requirements.txt y escribimos "Django"
+
+pip install -r requirements.txt
+
+---
+
+# creación de proyecto
+
+django-admin startproject nombre .
+
+# creación de app
+
+django-admin stratapp nombre
+
+---
+
+#iniciar app
+python3 manage.py runserver;
+
