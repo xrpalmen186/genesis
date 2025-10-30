@@ -1,3 +1,5 @@
+## INTRODUCCION DJANGO
+
 # creación del entorno virtual:
 
 python3 -m venv env
@@ -20,8 +22,118 @@ django-admin startproject nombre .
 
 django-admin stratapp nombre
 
+#sin punto para que cree la carpeta
+
 ---
 
 #iniciar app
 python3 manage.py runserver;
 
+
+---
+
+# metemos la nueva app en el archivo settings del proyecto (settings.py)
+# añado las urls en urls.py
+
+# cada app tiene todo lo suyo, aunque podemos hacerlo en urls del proyecto.
+
+//proyecto
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls')),
+]
+
+//app
+
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.inicio, name='inicio'),
+]
+
+# antes de renderizar, creamos una carpeta "templates/nombreAPP" (dentro de la app) - SI NO DA ERROR
+
+# en este caso "templates/blog/inicio.html"
+
+# en views.py de la app, creamos la primera vista
+
+from django.shortcuts import render
+
+# Create your views here.
+def inicio (request):
+    return render(request, 'blog/inicio.html')
+
+
+
+## MODELOS (almacenar y gestionar toda la información)
+
+# pasa orientacion a objetos a sql
+
+# creamos modelos en el models.py de la app
+
+//>>> blog/models.py
+
+from django.db import models
+
+# Create your models here.
+class Post(models.Model):
+    titulo = models.CharField(max_length=200)
+    autor = models.CharField(max_length=60)
+    cuerpo = models.TextField()
+
+
+# preparar las migraciones
+
+python3 manage.py makemigrations [nombreAPP]
+
+# relejar cambios en la base de datos
+
+python3 manage.py migrate [nombreAPP]
+
+# hace una migracion de todas las apps
+
+python3 manage.py migrate
+
+
+
+#configuramos para que se pueda administrar datos de las tabas en django
+
+//>> blog/admin.py 
+
+from django.contrib import admin
+from .models import blog
+
+# Register your models here.
+admin.site.register(Post)
+
+
+--
+
+# QuerySets (ORM)
+
+python3 manage.py shell
+
+>>> form blog.models import Post
+>>> Post.object.
+
+Model.objects.all()
+Model.objects.get(id=1)
+Model.objects.filter(campo=valor)
+
+...
+
+# output:
+
+>>> from blog.models import Post
+>>> Post.objects.all()
+<QuerySet [<Post: (1) papa>]>
+>>> Post.objects.get(id=1)
+<Post: (1) papa>
+
+....
