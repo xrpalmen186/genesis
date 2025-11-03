@@ -1,0 +1,38 @@
+[
+    {
+        "nombre": "Lechuga",
+        "precio": 200.0,
+        "stock": 5,
+        "categoria": "Alimentacion"
+    },
+    {
+        "nombre": "Patata",
+        "precio": 20.0,
+        "stock": 100,
+        "categoria": "Alimentacion"
+    },
+    {
+        "nombre": "iPhone",
+        "precio": 1300.0,
+        "stock": 20,
+        "categoria": "Tecnologia"
+    },
+    {
+        "nombre": "Nintendo Switch 2",
+        "precio": 450.0,
+        "stock": 3,
+        "categoria": "Tecnologia"
+    },
+    {
+        "nombre": "Teclado Logitech",
+        "precio": 50.0,
+        "stock": 10,
+        "categoria": "Tecnologia"
+    },
+    {
+        "nombre": "Folios",
+        "precio": 1.2,
+        "stock": 10000,
+        "categoria": "Papeleria"
+    }
+]
