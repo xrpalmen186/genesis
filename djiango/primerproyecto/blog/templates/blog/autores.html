@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts de Autor</title>
+    <title>Autores</title>
 
     <style>
         * {
@@ -13,14 +13,11 @@
     </style>
 </head>
 <body>
-    
-    <!--Mostrar todos los posts de un autor en especifico-->
-    
-    <h1>Posts de {{ autor.nombre }} {{ autor.apellido }}</h1>
+    <h1>Autores</h1>
     <ul>
-        {% for post in posts %}
+        {% for autor in autores %}
             <li>
-                <a href="{% url 'detalle_post' pk=post.pk %}">{{ post.titulo }}</a>
+                <a href="{% url 'autor_posts' pk=autor.pk %}">{{ autor.nombre }} {{ autor.apellido }}</a>
             </li>
         {% endfor %}
     </ul>

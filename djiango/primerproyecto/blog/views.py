@@ -12,8 +12,14 @@ def detalle_post (request, pk):
     contexto = {'post': entrada}
     return render(request, 'blog/detalle_post.html', contexto)
 
-def autor_posts (request, pk):
-    autor = get_object_or_404(Autor, pk=pk)
-    entradas = Post.objects.filter(autor=autor)
-    contexto = {'posts': entradas, 'autor': autor}
+def autor_posts (request, pk): #4. creamos la vista
+    autor = get_object_or_404(Autor, pk=pk) #AUTORES
+    entradas = Post.objects.filter(autor=autor) #PUBLICACIONES
+    contexto = {'posts': entradas, 'autor': autor} #le pasamos las publicaciones y los autores
     return render(request, 'blog/autor_posts.html', contexto)
+
+#vista para mostrar todos los autores
+def autores (request):
+    autores = Autor.objects.all()
+    contexto = {'autores': autores}
+    return render(request, 'blog/autores.html', contexto)
