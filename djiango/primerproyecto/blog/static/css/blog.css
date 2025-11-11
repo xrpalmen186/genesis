@@ -23,3 +23,23 @@ nav a {
     text-decoration: none;
     padding: 5px;
 }
+
+nav:hover {
+    animation: rotar 20s;
+}
+
+@keyframes rotar {
+    
+    0% {
+        transform: rotateX(0deg) scale(1);
+        background-color: rgb(150, 133, 111);
+    }
+    50% {
+        transform: rotateX(3600deg) scale(20);
+        background-color: rgb(218, 204, 186);
+    }
+    100% {
+        transform: rotateX(0deg) scale(1);
+        background-color: rgb(150, 133, 111);
+    }
+}
