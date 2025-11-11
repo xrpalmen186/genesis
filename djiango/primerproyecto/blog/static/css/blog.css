@@ -1,0 +1,25 @@
+* { 
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+nav {
+    /*forzar*/
+    background-color: rgb(150, 133, 111);
+    padding: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav li {
+    display: inline-block;
+    margin-right: 10px;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+}
