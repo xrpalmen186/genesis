@@ -3,8 +3,9 @@ from .models import Post, Autor #desde la app en la que está importamos ...
 
 # Create your views here.
 def inicio (request):
+    autores = Autor.objects.all() #autores
     entradas = Post.objects.all() #data set
-    contexto = {'entradas': entradas}
+    contexto = {'entradas': entradas, 'autores': autores}
     return render(request, 'blog/inicio.html', contexto)
 
 def detalle_post (request, pk):

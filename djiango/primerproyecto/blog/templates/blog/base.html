@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %}</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        nav {
+            background-color: rgb(150, 133, 111);
+            padding: 10px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="{% url 'autores' %}">Autores</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+</body>
+</html>
