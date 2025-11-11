@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--Mostrar todos los posts de un autor en especifico-->
+    
+    <h1>Posts de {{ autor.nombre }} {{ autor.apellido }}</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'detalle_post' post.pk %}">{{ post.titulo }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

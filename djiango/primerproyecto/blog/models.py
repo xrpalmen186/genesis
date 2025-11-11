@@ -1,22 +1,23 @@
 from django.db import models
 
+# Create your models here.
 
 class Autor(models.Model):
     nombre = models.CharField(max_length=60)
     apellido = models.CharField(max_length=60)
+    edad = models.IntegerField()
+    email = models.EmailField(null=True, blank=True)
     
     def __str__(self) -> str:
-        return f"{self.apellido}, {self.nombre}"
-
-
-# Create your models here.
+        return f"{self.nombre}, {self.apellido}"
+    
+    
 class Post(models.Model):
     titulo = models.CharField(max_length=200)
-    autor = models.CharField(max_length=60)
+    # autor = models.CharField(max_length=60)
     # cargarme la base de datospara hacer esto (IDEA: crear pagina donde se muestren todos los posts de un autor)
-    #autor = models.ForeignKey(Autor, on_delete=models.SET_NULL, null=True)
+    autor = models.ForeignKey(Autor, on_delete=models.CASCADE, null=True) # si autor lo hubieramos creado debajo Autor iría con ''
     cuerpo = models.TextField()
-    email = models.EmailField(null=True, blank=True)
     fechaPublicacion = models.DateTimeField(auto_now_add=True)
     
     def __str__(self) -> str:

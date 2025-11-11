@@ -74,8 +74,6 @@ class Inventario:
         for p in self.productos:
             p.mostrar()
 
-    # --- MÉTRICAS Y ESTADÍSTICAS ---
-
     def producto_mas_caro(self):
         if not self.productos:
             print("No hay productos")
