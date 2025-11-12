@@ -10,4 +10,7 @@ urlpatterns = [
     
     #pagina con todos los autores
     path('autores', views.autores, name='autores'),
+    
+    #formulario para añadir autores
+    path('autor/nuevo', views.nuevo_autor, name='nuevo_autor'),
 ]

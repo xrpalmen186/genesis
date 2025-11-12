@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autores</title>
+{% extends 'blog/base.html' %}
 
-    <style>
-        * {
-            margin: 0;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
-    </style>
-</head>
-<body>
+{% block titulo %}
+Autores
+{% endblock %}
+
+{% block contenido %}
     <h1>Autores</h1>
     <ul>
         {% for autor in autores %}
@@ -20,6 +12,10 @@
                 <a href="{% url 'autor_posts' pk=autor.pk %}">{{ autor.nombre }} {{ autor.apellido }}</a> 
             </li>
         {% endfor %}
+        
     </ul>
-</body>
-</html>
+
+    <br>
+
+    <a style="background-color: rgb(218, 204, 186); width: 120px; text-align: center; margin-top: 20px; padding: 10px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold;" href="{% url 'nuevo_autor' %}">Crear nuevo autor</a>
+{% endblock %}
