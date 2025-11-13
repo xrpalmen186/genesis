@@ -6,10 +6,13 @@ Autores
 
 {% block contenido %}
     <h1>Autores</h1>
-    <ul>
+    <ul style="background-color: antiquewhite;">
         {% for autor in autores %}
-            <li>
-                <a href="{% url 'autor_posts' pk=autor.pk %}">{{ autor.nombre }} {{ autor.apellido }}</a> 
+            <li style="display: flex; gap: 10px; background-color: antiquewhite; padding: 10px; justify-content: space-between; border-bottom: 1px solid rgba(0, 0, 0, 0.061);">
+                <a style="background-color: rgb(218, 204, 186); width: 100%; text-align: left; padding: 5px 5px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold;" href="{% url 'autor_posts' pk=autor.pk %}">{{ autor.nombre }}, {{ autor.apellido }}</a>
+                <a style="background-color: rgb(205, 218, 186); width: 120px; text-align: center; padding: 5px 5px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold;" href="{% url 'detalle_autor' pk=autor.pk %}">Detalles</a>
+                <a style="background-color: rgb(186, 206, 218); width: 120px; text-align: center; padding: 5px 5px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold;" href="{% url 'editar_autor' pk=autor.pk %}">Editar</a>
+                <a style="background-color: rgb(237, 127, 127); width: 120px; text-align: center; padding: 5px 5px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold;" href="{% url 'eliminar_autor' pk=autor.pk %}">Eliminar</a>
             </li>
         {% endfor %}
         
@@ -17,5 +20,7 @@ Autores
 
     <br>
 
-    <a style="background-color: rgb(218, 204, 186); width: 120px; text-align: center; margin-top: 20px; padding: 10px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold;" href="{% url 'nuevo_autor' %}">Crear nuevo autor</a>
+    <div style="text-align: center;">
+        <a style="background-color: rgb(181, 181, 181); width: 120px; text-align: center; margin-top: 20px; padding: 10px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold;" href="{% url 'nuevo_autor' %}">Crear nuevo autor</a>
+    </div>
 {% endblock %}

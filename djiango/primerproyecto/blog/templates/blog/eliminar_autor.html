@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block titulo %}
+Eliminar autor
+{% endblock %}
+
+{% block contenido %}
+    <h1>Eliminar autor</h1>
+    <p>¿Estás seguro de que deseas eliminar al autor "{{ autor.nombre }} {{ autor.apellido }}"?</p>
+    <form style="margin-top: 20px;" method="post">
+        {% csrf_token %}
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button style="background-color: rgb(237, 127, 127); width: 100%; text-align: center; padding: 10px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold; font-size: 1.4rem;" type="submit">Sí, eliminar</button>
+            <a style="background-color: rgb(180, 183, 181); width: 100%; text-align: center; padding: 10px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold; font-size: 1.4rem;" href="{% url 'autores' %}">Cancelar</a>
+        </div>
+    </form>
+    
+{% endblock %}

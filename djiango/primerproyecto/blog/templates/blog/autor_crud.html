@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block contenido %}
+    {% if estado == 'detail' %}
+        <h1>Detalles del autor</h1>
+        <fieldset style="border: 0;" disabled>
+            <form action="" method="post">
+                {% csrf_token %}
+                
+                {{ form.as_p }}
+                
+            </form>
+        </fieldset>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a style="background-color: rgb(181, 181, 181);text-align: center; margin-top: 20px; padding: 10px 20px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold;" href="{% url 'autores' %}">Volver</a>
+        </div>
+    {% else %}
+        <h1>{% if estado == 'add' %} Crear nuevo autor {% else %} Editar autor {% endif %}</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div style="width: 100%; display: flex; flex-direction: column; gap: 10px; ">{{ form.as_p }}</div>
+            <button type="submit">{% if estado == 'add' %} Crear {% else %} Editar {% endif %}</button>
+            <a style="background-color: rgb(181, 181, 181);text-align: center; padding: 10px 20px;  border-radius: 10px; text-decoration: none; color: black; font-weight: bold;" href="{% url 'autores' %}">Volver</a>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -13,4 +13,13 @@ urlpatterns = [
     
     #formulario para añadir autores
     path('autor/nuevo', views.nuevo_autor, name='nuevo_autor'),
+    
+    #formulario para editar un autor especifico
+    path('autor/editar/<int:pk>', views.editar_autor, name='editar_autor'),
+    
+    #eliminar autor
+    path('autor/eliminar/<int:pk>', views.eliminar_autor, name='eliminar_autor'),
+    
+    #detalle autor
+    path('autor/detalle/<int:pk>', views.detalle_autor, name='detalle_autor'),
 ]

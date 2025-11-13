@@ -47,10 +47,43 @@ def nuevo_autor (request):
             
             form.save() #si usamos el model form
             return redirect('autores')
-        
-        pass
     else:
         form = AutorModelFormulario()
-        contexto = {'form': form}
+        contexto = {'form': form, 'estado': 'add'}
     
-    return render(request, 'blog/nuevo_autor.html', contexto)
+    return render(request, 'blog/autor_crud.html', contexto)
+
+#vista para mostrar formulario de edición de un autor
+def editar_autor (request, pk):
+    autor = get_object_or_404(Autor, pk=pk)
+    if request.method == 'POST':
+        form = AutorModelFormulario(request.POST, instance=autor) #crea una instancia con sus datos
+        if form.is_valid():
+            form.save()
+            return redirect('autores')
+    else:
+        form = AutorModelFormulario(instance=autor)
+        contexto = {'form': form, 'estado': 'edit'}
+    
+    return render(request, 'blog/autor_crud.html', contexto)
+
+#vista para eliminar autor pide confirmacion en eliminar_autor
+def eliminar_autor (request, pk):
+    autor = get_object_or_404(Autor, pk=pk)
+    if request.method == 'POST':
+        autor.delete()
+        return redirect('autores')
+    return render(request, 'blog/eliminar_autor.html', {'autor': autor})
+
+#vista para mostrar detalles del autor
+def detalle_autor (request, pk):
+    autor = get_object_or_404(Autor, pk=pk)
+    
+    #en el caso de que sea GET coge 
+    if request.method == 'GET':
+        form = AutorModelFormulario(instance=autor)
+        contexto = {'form': form, 'estado': 'detail'}
+        return render(request, 'blog/autor_crud.html', contexto)
+    else:
+        return redirect('autores')
+        
