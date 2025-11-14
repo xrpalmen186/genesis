@@ -1,0 +1,206 @@
+/* =========================
+   Estilos generales de la tienda
+   ========================= */
+
+:root {
+    --bg-card: #ffffff;
+    --muted: #6b7280;
+    /* gris para textos secundarios */
+    --primary: #0d6efd;
+    /* bootstrap primary */
+    --surface-shadow: rgba(16, 24, 40, 0.06);
+    --accent: #111827;
+}
+
+/* Reset suave para componentes */
+.card.product-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 6px 18px var(--surface-shadow);
+    transition: transform .18s cubic-bezier(.2, .8, .2, 1), box-shadow .18s;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Hover elegante */
+.card.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 34px rgba(16, 24, 40, 0.10);
+}
+
+/* Imagen: contenedor fijo para mantener alineación */
+.product-card__media {
+    width: 120px;
+    min-width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    /* background: linear-gradient(180deg, #f8fafc 0%, #fff 100%); */
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 8px;
+}
+
+/* imagen responsiva, centrada y contenida */
+.product-card__media img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Contenido principal */
+.product-card__body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 100%;
+    /* important to truncate text */
+}
+
+/* Título y texto */
+.product-card__title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-card__desc {
+    font-size: .875rem;
+    color: var(--muted);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* truncar a 2 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Precio y acciones al final */
+.product-card__footer {
+    margin-top: auto;
+    /* empuja al bottom */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* Precio prominente */
+.product-card__price {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.02rem;
+}
+
+/* Botón pequeño, elegante */
+.btn-product {
+    text-decoration: none;
+    background: #111827;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.8rem 2.5rem;
+    font-size: .9rem;
+    border: none;
+    transition: transform .12s ease, box-shadow .12s;
+    box-shadow: 0 4px 10px rgba(17, 24, 39, 0.06);
+}
+
+.btn-product:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.12);
+}
+
+/* estado stock pequeño */
+.product-card__stock {
+    font-size: .82rem;
+    color: var(--muted);
+}
+
+/* Grid contenedor (ajústalo en tu plantilla que renderiza productos) */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(320px, 1fr));
+    gap: 18px;
+}
+
+.product-detail {
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(3, minmax(320px, 1fr));
+    }
+}
+
+@media (max-width: 950px) {
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(320px, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .products-grid {
+        grid-template-columns: repeat(1, minmax(320px, 1fr));
+    }
+}
+
+/* Móvil: imagen encima, contenido debajo (mejor lectura) */
+@media (max-width: 576px) {
+    .card.product-card {
+        flex-direction: row;
+        /* keep row but adjust sizes */
+        gap: 10px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(1, minmax(320px, 1fr));
+        gap: 10px;
+    }
+
+    .product-card__media {
+        width: 80px;
+        height: 80px;
+        min-width: 80px;
+    }
+
+    .product-card__title {
+        font-size: .98rem;
+    }
+    /* Contenido principal */
+    .product-card__body {
+        min-width: 0;
+        /* important to truncate text */
+    }
+}
+
+/* Accesibilidad: focus visible en botones */
+.btn-product:focus {
+    outline: 3px solid rgba(13, 110, 253, 0.16);
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+/* pequeña utilidad para descripciones largas en listas compactas */
+.truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

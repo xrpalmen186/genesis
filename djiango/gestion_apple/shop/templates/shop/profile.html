@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Mi perfil | Tienda Apple{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <h2>Perfil de {{ request.user.username }}</h2>
+    <p><strong>Nombre:</strong> {{ request.user.get_full_name }}</p>
+    <p><strong>Email:</strong> {{ request.user.email }}</p>
+    <p><strong>Saldo disponible:</strong> {{ profile.balance }} €</p>
+
+    <hr>
+
+    <h4>Añadir saldo</h4>
+    <form method="post">
+      {% csrf_token %}
+      {{ add_form.non_field_errors }}
+      <div class="mb-3">
+        {{ add_form.amount.label_tag }}
+        {{ add_form.amount }}
+        {{ add_form.amount.errors }}
+      </div>
+      <button class="btn btn-success" type="submit">Añadir</button>
+    </form>
+    <hr>
+    <h4>Mis pedidos</h4>
+    {% if orders %}
+    <table class="table">
+        <thead>
+        <tr><th>Id</th><th>Fecha</th><th>Estado</th><th>Total</th><th>Detalle</th></tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.created_at }}</td>
+            <td>{{ order.get_status_display }}</td>
+            <td>{{ order.total }} €</td>
+            <td><a href="{% url 'order_detail' order.id %}">Ver</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No tienes pedidos todavía.</p>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

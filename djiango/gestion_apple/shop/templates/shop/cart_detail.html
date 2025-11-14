@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Carrito | Tienda Apple{% endblock %}
+{% block content %}
+<h2>Tu carrito</h2>
+{% if items %}
+<table class="table">
+  <thead>
+    <tr><th>Producto</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th><th></th></tr>
+  </thead>
+  <tbody>
+  {% for it in items %}
+    <tr>
+      <td>{{ it.product.name }}</td>
+      <td>{{ it.quantity }}</td>
+      <td>{{ it.price }} €</td>
+      <td>{{ it.subtotal }} €</td>
+      <td>
+        <a class="btn btn-sm btn-danger" href="{% url 'cart_remove' it.product.id %}">Eliminar</a>
+        <a class="btn btn-sm btn-secondary" href="{% url 'product_detail' it.product.slug %}">Ver</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<p class="fw-bold">Total: {{ total }} €</p>
+<a href="{% url 'checkout' %}" class="btn btn-success">Ir a pagar</a>
+{% else %}
+  <p>Tu carrito está vacío.</p>
+  <a href="{% url 'home' %}" class="btn btn-primary">Seguir comprando</a>
+{% endif %}
+{% endblock %}

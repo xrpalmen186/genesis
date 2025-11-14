@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio | Tienda Apple{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center mb-4">Bienvenido a Apple Store</h1>
+
+<p class="text-center text-muted">Explora los mejores productos de Apple</p>
+
+<div class="container">
+    <div class="products-grid">
+
+        {% for product in products %}
+        
+        <div class="col-12">
+            <div class="card product-card">
+                <!-- Media -->
+                <div class="product-card__media">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" loading="lazy" width="120" height="90">
+                {% else %}
+                    <img src="https://via.placeholder.com/120x90?text=Imagen" alt="Sin imagen" loading="lazy" width="120" height="90">
+                {% endif %}
+                </div>
+
+                <!-- Body -->
+                <div class="product-card__body">
+                    <h2 class="product-card__title">{{ product.name }}</h2>
+                    <!-- <p class="product-card__desc truncate-2">{{ product.description|default:"—" }}</p> -->
+
+                    <div class="product-card__footer">
+                        <div>
+                            <div class="product-card__price">{{ product.price }} €</div>
+                            <div class="product-card__stock">
+                                {% if product.stock > 0 %}
+                                En stock: {{ product.stock }}
+                                {% else %}
+                                Agotado
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="{% url 'product_detail' product.slug %}" class="btn-product ms-auto" aria-label="Ver {{ product.name }}">
+                                Ver
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {% empty %}
+    <p class="text-center">No hay productos todavía.</p>
+    {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Editar perfil | Tienda Apple{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <h3>Editar datos</h3>
+    <form method="post">
+      {% csrf_token %}
+      {{ uform.non_field_errors }}
+      <div class="mb-3">
+        {{ uform.first_name.label_tag }}
+        {{ uform.first_name }}
+        {{ uform.first_name.errors }}
+      </div>
+      <div class="mb-3">
+        {{ uform.last_name.label_tag }}
+        {{ uform.last_name }}
+        {{ uform.last_name.errors }}
+      </div>
+      <div class="mb-3">
+        {{ uform.email.label_tag }}
+        {{ uform.email }}
+        {{ uform.email.errors }}
+      </div>
+      <button class="btn btn-primary" name="save_profile" type="submit">Guardar</button>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <h3>Cambiar contraseña</h3>
+    <form method="post">
+      {% csrf_token %}
+      {{ pform.non_field_errors }}
+      <div class="mb-3">
+        {{ pform.old_password.label_tag }}
+        {{ pform.old_password }}
+        {{ pform.old_password.errors }}
+      </div>
+      <div class="mb-3">
+        {{ pform.new_password1.label_tag }}
+        {{ pform.new_password1 }}
+        {{ pform.new_password1.errors }}
+      </div>
+      <div class="mb-3">
+        {{ pform.new_password2.label_tag }}
+        {{ pform.new_password2 }}
+        {{ pform.new_password2.errors }}
+      </div>
+      <button class="btn btn-warning" name="change_password" type="submit">Cambiar contraseña</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

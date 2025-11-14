@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }} | Tienda Apple{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    {% if product.image %}
+      <img src="{{ product.image.url }}" class="img-fluid product-detail" alt="{{ product.name }}">
+    {% else %}
+      <img src="https://via.placeholder.com/600x400" class="img-fluid" alt="sin imagen">
+    {% endif %}
+  </div>
+  <div class="col-md-6">
+    <h2>{{ product.name }}</h2>
+    <p class="lead fw-bold">{{ product.price }} €</p>
+    <p>{{ product.description|linebreaks }}</p>
+    <p><strong>Stock:</strong> {{ product.stock }}</p>
+
+    <form action="{% url 'cart_add' product.id %}" method="post">
+      {% csrf_token %}
+      <div class="input-group mb-3" style="max-width:140px;">
+        <input type="number" name="quantity" value="1" min="1" max="{{ product.stock }}" class="form-control">
+        <button class="btn btn-primary" type="submit">Añadir</button>
+      </div>
+    </form>
+
+    <a href="{% url 'cart_detail' %}" class="btn btn-outline-secondary">Ver carrito</a>
+  </div>
+</div>
+{% endblock %}
