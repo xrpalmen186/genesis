@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block titulo %}Entradas del blog{% endblock %}
+
+{% block contenido %}
+<ul>
+{% for post in posts %}
+    <li><a href="{% url 'detalle_post' pk=post.pk %}">{{ post.titulo }} ({{ post.autor }})</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
