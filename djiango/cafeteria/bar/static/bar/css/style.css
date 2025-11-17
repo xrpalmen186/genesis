@@ -1,0 +1,96 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 2rem 0;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 4px 4px 1px rgba(11, 42, 63, 0.4);
+    border: 2px solid rgba(11, 42, 63, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 300px;
+    padding: 1rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.02) translateX(-5px) translateY(-5px);
+    box-shadow: 12px 12px 1px rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    filter: blur(0px);
+    transition: all 0.3s ease-in-out;
+}
+
+.card-container:hover .card:not(:hover) {
+    filter: blur(10px) grayscale(1);
+}
+
+.producto {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+
+.card-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+
+.card-description {
+    font-size: 1rem;
+    margin: 0.5rem;
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(11, 42, 63);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    font-weight: 800;
+}
+
+a:hover {
+    background-color: rgb(0, 0, 0);
+    transition: all 0.2s ease-in-out;
+}

@@ -1,5 +1,5 @@
 """
-ASGI config for practica_examen2 project.
+ASGI config for cafeteria project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'practica_examen2.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cafeteria.settings')
 
 application = get_asgi_application()

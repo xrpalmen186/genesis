@@ -1,5 +1,5 @@
 """
-WSGI config for practica_examen2 project.
+WSGI config for cafeteria project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'practica_examen2.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cafeteria.settings')
 
 application = get_wsgi_application()

@@ -1,0 +1,24 @@
+{% extends 'bar/base.html' %}
+
+{% block title %}Carta{% endblock %}
+
+{% block content %}
+<h1 class="section-title">- Carta -</h1>
+
+<div class="card-container">
+    {% for producto in productos %}
+        <div class="card producto">
+            <div>
+                <h2 class="card-title">{{ producto.nombre }}</h2>
+                <p class="card-description">Descripción: {{ producto.descripcion }}</p>
+            </div>
+
+            <div class="card-details">
+                <p class="card-price">Precio: {{ producto.precio }}€</p>
+                <a href="{% url 'detalle_producto' producto.pk %}">Ver más</a>
+            </div>
+            
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

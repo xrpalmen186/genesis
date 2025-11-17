@@ -1,0 +1,14 @@
+{% extends 'bar/base.html' %}
+
+{% block title %}Detalles Carta{% endblock %}
+
+{% block content %}
+<h1>Detalles Carta</h1>
+
+    <div class="card producto">
+        <h2 class="card-title">{{ producto.nombre }}</h2>
+        <p class="card-description">Descripción: {{ producto.descripcion }}</p>
+        <p class="card-price">Precio: {{ producto.precio }}</p>
+    </div>
+
+{% endblock %}
