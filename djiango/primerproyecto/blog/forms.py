@@ -11,4 +11,4 @@ class AutorFormulario(forms.Form):
 class AutorModelFormulario(forms.ModelForm):
     class Meta:
         model = Autor
-        fields = ['nombre', 'apellido', 'edad', 'email']
+        fields = ['nombre', 'apellido', 'edad', 'email'] # de esta forma nos basamos en el modelo Autor, un formulario basado en un modelo, le decimos el modelo y los campos que quiero.
