@@ -1,11 +1,38 @@
 {% extends 'app/base.html' %}
 
 {% block content %}
+
     <h1>Ingredientes</h1>
+
+
+    <form style="display: flex; gap: 10px; flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; background-color: antiquewhite; padding: 20px; border-radius: 20px; margin-bottom: 20px; font-family: 'Courier New', Courier, monospace; border: 1px solid black;" action="" method="get">
+        <label for="categoria">Categoría</label>
+        <select name="categoria" id="categoria">
+            <option value="">-- Selecciona una opción --</option>
+            {% for categoria in categorias %}
+                <option value="{{ categoria.categoria }}" {% if request.GET.categoria == categoria.categoria %}selected{% endif %}>{{ categoria }}</option>
+            {% endfor %}
+        </select>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" value="{{ request.GET.nombre }}" />
+
+        <label for="cantidad">Cantidad (g)</label>
+        <input type="number" name="cantidad" id="cantidad" value="{{ request.GET.cantidad }}" />
+
+        <label for="unidades">Unidades</label>
+        <input type="number" name="unidades" id="unidades" value="{{ request.GET.unidades }}" />
+
+        <input type="submit" value="Filtrar">
+    </form>
+
+    <form action="" method="get">
+        {{ formulario_filtros }}
+        <input type="submit" value="Filtrar">
+    </form>
 
     <ul>
         {% for ingrediente in ingredientes %}
-            <li>{{ ingrediente }}</li>
+            <li>{{ ingrediente }} ({{ ingrediente.cantidad }}g) - {{ ingrediente.unidad }} uds</li>
         {% endfor %}
     </ul>
 
