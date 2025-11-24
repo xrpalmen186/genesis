@@ -1,0 +1,8 @@
+/* small polish for ingredient cards */
+.ingredient-card {
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.ingredient-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}

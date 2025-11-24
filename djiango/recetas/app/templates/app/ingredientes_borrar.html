@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card border-danger shadow-sm">
+                <div class="card-body">
+                    <h3 class="h5 text-danger mb-3">Eliminar ingrediente</h3>
+
+                    <p>¿Estás seguro que quieres eliminar el ingrediente <strong>{{ ingrediente.nombre }}</strong> ({{
+                        ingrediente.categoria }})?</p>
+                    <p class="text-muted small">Esta acción no se puede deshacer.</p>
+
+                    <div class="d-flex gap-2 mt-4">
+                        <a href="{% url 'app:ingrediente_detalle' ingrediente.pk %}"
+                            class="btn btn-outline-secondary">Cancelar</a>
+
+                        <form method="post" action=""
+                            onsubmit="return confirm('¿Eliminar definitivamente {{ ingrediente.nombre }}? Esta acción es irreversible.');">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Eliminar definitivamente</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
