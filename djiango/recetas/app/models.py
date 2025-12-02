@@ -5,6 +5,14 @@ from django.db import models
 # class CategoriaChoices(models.TextChoices):
 #     LEGUMBRE = "LE", "Legumbres"
 
+class Receta(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    ingredientes = models.ManyToManyField('Ingrediente', related_name='recetas')
+    
+    def __str__(self) -> str:
+        return f"{self.nombre}"
+
 class CategoriaIngrediente(models.Model):
     nombre = models.CharField(max_length=50)
 
@@ -18,3 +26,6 @@ class Ingrediente(models.Model):
 
     def __str__(self) -> str:
         return f"{self.nombre} ({self.categoria})"
+
+
+# Crear TextChoices y IntegerChoices (global)

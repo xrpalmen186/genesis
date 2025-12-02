@@ -13,8 +13,8 @@
                     <form method="post" novalidate>
                         {% csrf_token %}
 
-
-                        {% for field in form.visible_fields %}
+                        {{ formularios }}
+                        <!-- {% for field in form.visible_fields %}
                         <div class="mb-3">
                             <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
 
@@ -39,7 +39,7 @@
                             <div class="invalid-feedback d-block">{{ error }}</div>
                             {% endfor %}
                         </div>
-                        {% endfor %}
+                        {% endfor %} -->
 
 
                         <div class="d-flex justify-content-between align-items-center mt-4">

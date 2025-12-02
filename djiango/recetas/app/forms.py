@@ -47,7 +47,7 @@ class IngredienteForm(forms.ModelForm):
         # (esto solo afecta al rendering; si quieres obligar a escoger, el model no permite null)
         self.fields['categoria'].empty_label = '— Selecciona categoría —'
 
-    # ejemplo de validación adicional (opcional)
+    # ejemplo de validación adicional
     def clean_nombre(self):
         nombre = self.cleaned_data.get('nombre', '').strip()
         if not nombre:
@@ -55,3 +55,57 @@ class IngredienteForm(forms.ModelForm):
         if len(nombre) > 50:
             raise forms.ValidationError('El nombre no puede tener más de 50 caracteres.')
         return nombre
+
+
+
+class IngredientesForm(forms.ModelForm):
+    class Meta:
+        model = Ingrediente
+        fields = ['nombre', 'categoria', 'refrigerado']
+
+        widgets = {
+            'nombre': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Nombre del ingrediente',
+                'maxlength': 50,
+            }),
+            'categoria': forms.Select(attrs={
+                'class': 'form-select',
+            }),
+            # el checkbox lo dejamos sin class aquí; lo añadimos en __init__ para usar form-check-input
+            'refrigerado': forms.CheckboxInput(),
+        }
+        labels = {
+            'nombre': 'Nombre',
+            'categoria': 'Categoría',
+            'refrigerado': '¿Refrigerado?',
+        }
+        help_texts = {
+            'nombre': 'Máx. 50 caracteres.',
+        }
+
+class RecetaIngredientesForm(forms.ModelForm):
+    class Meta:
+        model = Ingrediente
+        fields = ['nombre', 'categoria', 'refrigerado']
+        
+        widgets = {
+            'nombre': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Nombre del ingrediente',
+                'maxlength': 50,
+            }),
+            'categoria': forms.Select(attrs={
+                'class': 'form-select',
+            }),
+            # el checkbox lo dejamos sin class aquí; lo añadimos en __init__ para usar form-check-input
+            'refrigerado': forms.CheckboxInput(),
+        }
+        labels = {
+            'nombre': 'Nombre',
+            'categoria': 'Categoría',
+            'refrigerado': '¿Refrigerado?',
+        }
+        help_texts = {
+            'nombre': 'Máx. 50 caracteres.',
+        }

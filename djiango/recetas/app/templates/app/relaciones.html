@@ -1,0 +1,63 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h1>Relaciones</h1>
+<hr>
+
+<div style="margin: 20px;">
+    <h2>Recetas</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px;">
+        {% for receta in recetas %}
+            <div style="padding: 20px; background-color: aliceblue; width: 400px; border: 1px solid #000;">
+                <h2>{{ receta.nombre }}</h2>
+                <p>Ingredientes:</p>
+                <ul>
+                    {% for ingrediente in receta.ingredientes.all %}
+                        <li>{{ ingrediente.nombre }}</li>
+                    {% endfor %}
+                </ul>
+                <p>Añadir Ingrediente: (Formset)</p>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label" for="id_ingrediente">Añadir Ingrediente</label>
+                        <select class="form-select" aria-label="id_ingrediente" name="id_ingrediente" id="id_ingrediente">
+                            <option value="">--- Seleccione un ingrediente ---</option>
+                            {% for ingrediente in ingredientes %}
+                                <option value="{{ ingrediente.pk }}">{{ ingrediente.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Añadir</button>
+                </form>
+                <p>Descripcion:</p>
+                <p>{{ receta.descripcion }}</p>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+
+    <hr>
+    <h2>Ingredientes</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px;">
+        {% for ingrediente in ingredientes %}
+            <div style="padding: 20px; background-color: beige; width: 400px; border: 1px solid #000;">
+                <h2>{{ ingrediente.nombre }}</h2>
+                {% if ingrediente.recetas.all %}
+                <p>Recetas:</p>
+                <ul>
+                    {% for receta in ingrediente.recetas.all %}
+                        <li>{{ receta.nombre }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <p>(no tiene recetas)</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
