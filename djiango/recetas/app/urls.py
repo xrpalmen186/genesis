@@ -9,6 +9,11 @@ urlpatterns = [
     
     path('relaciones', views.relaciones, name='relaciones'),
     
+    path('recetas', views.recetas_lista, name='recetas_lista'),
+    path('receta/<int:pk>', views.receta_detalle, name='receta_detalle'),
+    path('receta/<int:receta_pk>/agregar_ingrediente/<int:ingrediente_pk>', views.receta_agregar_ingrediente, name='receta_agregar_ingrediente'),
+    path('receta/<int:receta_pk>/eliminar_ingrediente/<int:ingrediente_pk>', views.receta_eliminar_ingrediente, name='receta_eliminar_ingrediente'),
+    
     path('ingredientes', views.ingredientes_lista, name='ingredientes_lista'),
     path('ingredientes/crear', views.ingrediente_crear, name='ingrediente_crear'),
     path('ingrediente_detalle/<int:pk>', views.ingrediente_detalle, name='ingrediente_detalle'),

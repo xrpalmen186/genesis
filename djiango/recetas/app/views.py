@@ -130,3 +130,30 @@ def relaciones(request):
         formset = form()
     
     return render(request, 'app/relaciones.html', {'recetas': recetas, 'ingredientes': ingredientes, 'formularios': formset})
+
+
+def recetas_lista(request):
+    recetas = Receta.objects.all()
+    return render(request, 'app/recetas_lista.html', {'recetas': recetas})
+
+
+def receta_detalle(request, pk):
+    receta = get_object_or_404(Receta, pk=pk)
+    ingredientes = Ingrediente.objects.all()
+    return render(request, 'app/receta_detalle.html', {'receta': receta, 'ingredientes': ingredientes})
+
+def receta_agregar_ingrediente(request, receta_pk, ingrediente_pk):
+    receta = get_object_or_404(Receta, pk=receta_pk)
+    ingrediente = get_object_or_404(Ingrediente, pk=ingrediente_pk)
+    
+    receta.ingredientes.add(ingrediente)
+    
+    return redirect('app:receta_detalle', pk=receta.pk)
+
+def receta_eliminar_ingrediente(request, receta_pk, ingrediente_pk):
+    receta = get_object_or_404(Receta, pk=receta_pk)
+    ingrediente = get_object_or_404(Ingrediente, pk=ingrediente_pk)
+    
+    receta.ingredientes.remove(ingrediente)
+    
+    return redirect('app:receta_detalle', pk=receta.pk)
