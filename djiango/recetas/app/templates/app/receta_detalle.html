@@ -8,16 +8,22 @@
 <p><strong>Ingredientes:</strong></p>
 <ul>
     {% for ingrediente in receta.ingredientes.all %}
-        <li>{{ ingrediente.nombre }} <a href="{% url 'app:receta_eliminar_ingrediente' receta.pk ingrediente.pk %}">Eliminar</a></li>
+        <li>{{ ingrediente.nombre }} - ({{ receta.ingrediente.cantidad }}) <a href="{% url 'app:receta_eliminar_ingrediente' receta.pk ingrediente.pk %}">Eliminar</a></li>
     {% endfor %}
 </ul>
 
-<h2>Añadir Ingredientes</h2>
+<h2>Añadir ingredientes</h2>
 
 <ul>
     {% for ingrediente in ingredientes %}
-        <li>{{ ingrediente.nombre }} <a href="{% url 'app:receta_agregar_ingrediente' receta.pk ingrediente.pk %}">Añadir</a> </li>
-
+        {% if not ingrediente in receta.ingredientes.all %}
+            <form action="{% url 'app:receta_agregar_ingrediente' receta.pk ingrediente.pk %}" method="post" style="display:block;">
+                {% csrf_token %}
+                <li>{{ ingrediente.nombre }}</li>
+                <input required type="number" name="cantidad" placeholder="Cantidad" style="width: 100px;">
+                <button type="submit">Añadir</button>
+            </form>
+        {% endif %}
     {% endfor %}
 </ul>
 

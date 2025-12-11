@@ -1,5 +1,5 @@
 from django import forms
-from .models import Ingrediente, CategoriaIngrediente
+from .models import *
 
 class IngredienteForm(forms.ModelForm):
     class Meta:
@@ -108,4 +108,25 @@ class RecetaIngredientesForm(forms.ModelForm):
         }
         help_texts = {
             'nombre': 'Máx. 50 caracteres.',
+        }
+
+class IngredienteRecetaForm(forms.ModelForm):
+    class Meta:
+        model = IngredienteReceta
+        fields = ['receta', 'ingrediente', 'cantidad']
+        
+        widgets = {
+            'receta': forms.HiddenInput(),
+            'ingrediente': forms.HiddenInput(),
+            'cantidad': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Cantidad',
+                'min': 1,
+            }),
+        }
+        labels = {
+            'cantidad': 'Cantidad',
+        }
+        help_texts = {
+            'cantidad': 'Mín. 1 unidad',
         }
