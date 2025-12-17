@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Crear Nuevo Pedido</h2>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <div class="card p-3 mb-3">
+        <h4>Datos del Cliente</h4>
+        {{ form_pedido.as_p }}
+    </div>
+
+    <div class="card p-3">
+        <h4>Productos</h4>
+        {{ formset_lineas.management_form }}
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>¿Eliminar?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for form in formset_lineas %}
+                    <tr>
+                        <td>{{ form.producto }} {{ form.producto.errors }}</td>
+                        <td>{{ form.cantidad }} {{ form.cantidad.errors }}</td>
+                        <td>
+                            {% if formset_lineas.can_delete %}
+                                {{ form.DELETE }}
+                            {% endif %}
+                        </td>
+                        {% for hidden in form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Guardar Pedido Completo</button>
+</form>
+{% endblock %}

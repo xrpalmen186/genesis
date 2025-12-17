@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center my-4">
+    <h2>Catálogo de Comida</h2>
+    <div>
+        <a href="{% url 'tienda:crear_pedido' %}" class="btn btn-outline-primary me-2">Nuevo Pedido</a>
+        <a href="{% url 'tienda:crear_producto' %}" class="btn btn-success">+ Nuevo Producto</a>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Producto</th>
+                    <th>Categoría</th>     <th>Precio</th>
+                    <th>Info Nutricional</th> <th>¿Es Vegano?</th>      </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td class="fw-bold">{{ producto.nombre }}</td>
+                    
+                    <td>
+                        <span class="badge bg-info text-dark">
+                            {{ producto.categoria.nombre }}
+                        </span>
+                    </td>
+                    
+                    <td>{{ producto.precio }} €</td>
+
+                    <td>
+                        {% if producto.info_nutricional %}
+                            {{ producto.info_nutricional.calorias }} kcal
+                        {% else %}
+                            <span class="text-muted small">Sin datos</span>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if producto.info_nutricional %}
+                            {% if producto.info_nutricional.es_vegano %}
+                                <span class="badge bg-success">Vegano</span>
+                            {% else %}
+                                <span class="badge bg-danger">No Vegano</span>
+                            {% endif %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center py-4">
+                        No hay productos registrados todavía.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

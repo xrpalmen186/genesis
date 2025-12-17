@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda Examen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">Mi Tienda</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="{% url 'tienda:lista_productos' %}">Productos</a>
+                <a class="nav-link" href="{% url 'tienda:crear_producto' %}">Nuevo Producto</a>
+                <a class="nav-link" href="{% url 'tienda:crear_pedido' %}">Nuevo Pedido</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
